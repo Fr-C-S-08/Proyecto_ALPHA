@@ -14,13 +14,13 @@ import java.util.Random;
 
 public class TopicoPosicion extends Thread {
 
-    private static final String url     = ActiveMQConnection.DEFAULT_BROKER_URL;
-    private static final String topico  = "MONSTRUO_TOPICO";
+    private static final String url = ActiveMQConnection.DEFAULT_BROKER_URL;
+    private static final String topico = "MONSTRUO_TOPICO";
     private static final int intervalo_ms = 2000; // cada 2 segundos sale un nuevo monstruo
 
     private boolean corriendo = true;
-    private int     filaActual  = -1;
-    private int     colActual   = -1;
+    private int filaActual = -1;
+    private int colActual = -1;
 
     @Override
     public void run() {
@@ -40,12 +40,12 @@ public class TopicoPosicion extends Thread {
 
             while (corriendo) {
                 int fila = random.nextInt(3); // 0, 1 o 2
-                int col  = random.nextInt(3); // 0, 1 o 2
+                int col = random.nextInt(3); // 0, 1 o 2
 
                 // Guarda la posición actual para validación del servidor cuando se detecte un hit
                 synchronized (this) {
                     filaActual = fila;
-                    colActual  = col;
+                    colActual = col;
                 }
 
                 TextMessage message = session.createTextMessage();

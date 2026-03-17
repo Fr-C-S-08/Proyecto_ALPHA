@@ -2,8 +2,8 @@ package EvaluacionExperimental;
 
 public class PruebaDeEstres {
 
-    private static final int[] configuraciones  = {50, 100, 150, 200, 250, 300, 350, 400, 450, 500};
-    private static final int   repeticiones     = 10;
+    private static final int[] configuraciones = {50, 100, 150, 200, 250, 300, 350, 400, 450, 500};
+    private static final int   repeticiones    = 10;
 
     void main() throws InterruptedException {
         for (int numClientes : configuraciones) {
@@ -22,7 +22,7 @@ public class PruebaDeEstres {
         }
     }
 
-    // Lanza numClientes hilos simultáneos y espera a que todos terminen
+    // Lanza N numero de hilos simultáneos y espera a que todos terminen
     private void ejecutarRonda(int numClientes, ResultadosMetricas resultados)
             throws InterruptedException {
 

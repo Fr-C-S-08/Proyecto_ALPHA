@@ -5,10 +5,11 @@ import java.io.*;
 
 public class ClientePruebaEstres extends Thread {
 
-    private static final int    puerto   = 49152;
-    private static final String servidor = "localhost";
+    private static final int    puerto      = 49152;
+    private static final String servidor    = "localhost";
+    private static final int    pausa_hit   = 100;
 
-    private String            nombreJugador;
+    private String             nombreJugador;
     private ResultadosMetricas resultados;
 
     public ClientePruebaEstres(String nombreJugador, ResultadosMetricas resultados) {
@@ -18,9 +19,10 @@ public class ClientePruebaEstres extends Thread {
 
     @Override
     public void run() {
-        Socket           socket = null;
-        DataInputStream  in     = null;
-        DataOutputStream out    = null;
+        Socket           socket          = null;
+        DataInputStream  in              = null;
+        DataOutputStream out             = null;
+        boolean          loginRegistrado = false;
 
         try {
             socket = new Socket(servidor, puerto);
@@ -36,6 +38,7 @@ public class ClientePruebaEstres extends Thread {
             boolean loginExitoso = respuestaLogin[0].equals("OK");
             resultados.registrarConexion(loginExitoso);
             resultados.agregarTiempoRegistro(tiempoRegistro);
+            loginRegistrado = true;
 
             if (loginExitoso) {
                 // Mide tiempo de juego — manda 5 hits automáticos
@@ -49,17 +52,23 @@ public class ClientePruebaEstres extends Thread {
                     long tiempoHit = System.currentTimeMillis() - inicioHit;
 
                     resultados.agregarTiempoJuego(tiempoHit);
+
+                    // Pausa entre hits para mantener la conexión abierta y generar carga realista
+                    Thread.sleep(pausa_hit);
                 }
             }
 
         } catch (UnknownHostException e) {
             System.out.println("Sock: " + e.getMessage());
-            resultados.registrarConexion(false);
+            if (!loginRegistrado) resultados.registrarConexion(false);
         } catch (EOFException e) {
             System.out.println("EOF: " + e.getMessage());
+            if (!loginRegistrado) resultados.registrarConexion(false);
         } catch (IOException e) {
             System.out.println("IO: " + e.getMessage());
-            resultados.registrarConexion(false);
+            if (!loginRegistrado) resultados.registrarConexion(false);
+        } catch (InterruptedException e) {
+            System.out.println("Interrupted: " + e.getMessage());
         } finally {
             if (socket != null) try {
                 socket.close();

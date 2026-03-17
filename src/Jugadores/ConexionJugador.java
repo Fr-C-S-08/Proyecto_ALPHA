@@ -17,7 +17,7 @@ public class ConexionJugador {
 
     public ConexionJugador(String nombreJugador, VisualJugador ventana) {
         this.nombreJugador = nombreJugador;
-        this.ventana       = ventana;
+        this.ventana = ventana;
     }
 
     // Aquí se establece la conexión y el login
