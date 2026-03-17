@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="activemq-broker-6.2.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../apache-activemq-6.2.0/lib/activemq-broker-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../apache-activemq-6.2.0/lib/activemq-client-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../apache-activemq-6.2.0/lib/activemq-console-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../apache-activemq-6.2.0/lib/activemq-jaas-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../apache-activemq-6.2.0/lib/activemq-kahadb-store-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../apache-activemq-6.2.0/lib/activemq-openwire-legacy-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../apache-activemq-6.2.0/lib/activemq-protobuf-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../apache-activemq-6.2.0/lib/activemq-spring-6.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../apache-activemq-6.2.0/lib/activemq-web-6.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
